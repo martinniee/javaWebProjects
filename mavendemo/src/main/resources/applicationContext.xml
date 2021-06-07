@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--        新增类 Car-->
+        <bean id="car" class="com.nathan.spring.Car">
+                <property name="name" value="特斯拉"/>
+                <property name="color" value="黑色" />
+        </bean>
+
+
+        <bean id="user" class="com.nathan.spring.User" >
+                <property name="username" value="张三" />
+                <property name="age" value="23" />
+<!--                关联Car到User  ref是Car的id-->
+                <property name="car" ref="car" />
+        </bean>
+</beans>

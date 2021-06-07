@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
+
+
+<!--    扫描包下的类,作注解-->
+    <context:component-scan base-package="com.nathan" />
+
+
+<!--        创建dataSource数据源-->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+<!--        创建spring对jdbc支持的工具类 jdbcTemplate-->
+        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+                <property name="dataSource" ref="dataSource"  />
+        </bean>
+
+
+<!--        注入属性值-->
+        <bean id="car" class="com.nathan.bean.Car">
+                <property name="name" value="奥迪"/>
+                <property name="color" value="yellow"/>
+        </bean>
+
+        <bean id="user" class="com.nathan.bean.User">
+               <property name="username" value="徐文豪"/>
+               <property name="car" ref="car" />
+        </bean>
+
+</beans>
